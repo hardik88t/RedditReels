@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}Reddit & YT Credentials{% endblock %}
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h1>
+            Credential Keys
+        </h1>
+        <h4>Enter your Reddit API keys</h4>
+        <form method="POST" action="/api/keys">
+            <div class="form-group">
+                <label for="client_id">Client ID</label>
+                <input type="text" class="form-control" id="client_id" name="client_id"
+                    placeholder="{{redditdata.client_id}}">
+            </div>
+            <div class="form-group">
+                <label for="client_secret">Client Secret</label>
+                <input type="text" class="form-control" id="client_secret" name="client_secret"
+                    placeholder="{{redditdata.client_secret}}">
+            </div>
+            <!-- <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div> -->
+            <div class="form-group">
+                <label for="user_agent">User Agent</label>
+                <input type="text" class="form-control" id="user_agent" name="user_agent"
+                    placeholder="{{redditdata.user_agent}}">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="{{redditdata.password}}">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="2fa" name="2fa">
+                <label class="form-check-label" for="2fa">2FA Enabled</label>
+            </div>
+            <div class="form-group">
+                <label for="ytdata">
+                    <h4>Paste YouTube Data API v3 key Here</h4>
+                </label>
+                {% if ytdata %}
+                <textarea class="form-control" id="ytdata" name="ytdata" placeholder="{{ytdata}}"></textarea>
+                {% else %}
+                <textarea class="form-control" id="ytdata" name="ytdata" placeholder="Paste your key here"></textarea>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+
+        <br><br>
+
+        {{mkdown|markdown}}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block subreddit %}
+Make New Video
+{% endblock %}
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1>Subreddit Name</h1>
+    <form method="POST" action="/api/video">
+        <div class="form-group">
+            <label for="subreddit">Subreddit</label>
+            <input type="text" class="form-control" id="subreddit" name="subreddit" placeholder="memes">
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="toyt" name="toyt">
+            <label class="form-check-label" for="toyt">Automatically Upload To YouTube</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Create Video</button>
+    </form>
+    <br><br>
+    {{ newvideomd|markdown }}
+
+
+</div>
+{% endblock %}

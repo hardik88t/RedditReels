@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+        <div class="embed-responsive embed-responsive-4by3" style="height: 80vh;">
+            <video class="embed-responsive-item" controls>
+                <source src="{{path}}" type="video/mp4">
+            </video>
+        </div>
+        <h4>{{video_data["title"]}}</h4>
+        </div>
+    </div>
+</div> -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="embed-responsive embed-responsive-4by3 mb-3" style="height: 80vh;">
+                <video class="embed-responsive-item" controls>
+                    <source src="{{ url_for('api.api_get_video', videoid=video_data.videoid) }}" type="video/mp4">
+                </video>
+            </div>
+            <h4 class="text-center">{{ video_data.title }}</h4>
+            {% if not video_data.uploaded %}
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="{{ url_for('api.api_upload_video', video_id=video_data.videoid) }}"
+                    class="btn btn-primary">UploadToYT</a>
+                <a href="{{ url_for('view.update_video', video_id=video_data.videoid) }}" class="btn btn-warning">Edit
+                </a>
+                <a href="{{ url_for('api.api_delete_video', video_id=video_data.videoid) }}"
+                    class="btn btn-danger">Delete</a>
+            </div>
+            {% else %}
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <td><a href="https://youtube.com/video/{{ video_data.ytvideolink }}" class="btn btn-info">WatchOnYT</a>
+                </td>
+                <a href="{{ url_for('view.update_video', video_id=video_data.videoid) }}"
+                    class="btn btn-warning">Edit</a>
+                <a href="{{ url_for('api.api_delete_video', video_id=video_data.videoid) }}"
+                    class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}

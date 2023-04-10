@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+{% if success %}
+<div class="alert alert-success">{{ success }}</div>
+{% endif %}
+
+{% block content %}
+<div class="container mt-2">
+    <h1>Video List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Play Video</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Keywords</th>
+                <th>Privacy Status</th>
+                <th>Timestamp</th>
+                <th>YouTube</th>
+            </tr>
+        </thead>
+        <tbody id="videoList">
+
+            {% for video in video_data %}
+            <tr>
+                <td><a href="/video/{{ video.videoid }}" class="btn btn-secondary">{{ video.file }}</a></td>
+                <td>{{ video.title }}</td>
+                <td>{{ video.description }}</td>
+                <td>{{ video.keywords }}</td>
+                <td>{{ video.privacyStatus }}</td>
+                <td>{{ video.timestamp }}</td>
+
+                {% if not video.uploaded %}
+                <td><a href="{{ url_for('api.api_upload_video', video_id=video.videoid) }}"
+                        class="btn btn-primary">UploadToYT</a>
+                    <!-- {{video.ytvideolink}} -->
+                </td>
+                {% else %}
+                <td>
+                    <a href="https://youtube.com/video/{{video.ytvideolink}}" class="btn btn-info">WatchOnYT</a>
+                    <!-- {{video.ytvideolink}} -->
+                </td>
+                <script>
+                    console.log("{{video.ytvideolink}}");
+                </script>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

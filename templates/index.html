@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block title %}RedditReels{% endblock %}
+
+{% block content %}
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+{% if success %}
+<div class="alert alert-success">{{ success }}</div>
+{% endif %}
+
+
+<!-- get markdown -->
+{{ mkdown|markdown }}
+
+{% endblock %}

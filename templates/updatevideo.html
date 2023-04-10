@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Update Video
+{% endblock %}
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Video Details</h1>
+    <form method="POST" action="/api/update/{{video_data.videoid}}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="{{video_data['title']}}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                placeholder="{{video_data['description']}}"></textarea>
+        </div>
+        <!-- <div class="form-group">
+            <label for="file">Video File</label>
+            <input type="file" class="form-control-file" id="file" name="file" accept="video/*" required>
+        </div> -->
+        <div class="form-group">
+            <label for="keywords">Keywords (comma separated)</label>
+            <input type="text" class="form-control" id="keywords" name="keywords"
+                placeholder="{{video_data['keywords']}}">
+        </div>
+        <div class="form-group">
+            <label for="privacyStatus">Privacy Status</label>
+            <select class="form-control" id="privacyStatus" name="privacyStatus">
+                <option value="private">Private</option>
+                <option value="unlisted">Unlisted</option>
+                <option value="public">Public</option>
+            </select>
+            <p class="alert-danger mt-1">YouTube API will not let you upload to public !!!</p>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Update Video Details</button>
+    </form>
+</div>
+{% endblock %}

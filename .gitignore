@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+.env
+__pycache__
+client_secrets.json
+*.json
+/data
+/extra
+*test*
+*.log
+=======
+# /env
+# .env
+# /data
+__pycache__
+# client_secrets.json
+# *.json
+# *.mp4
+# video.mp4
+>>>>>>> 3198fc886a47e4402f1847efeaab17b84022a5e0

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">RedditReels</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+
+                    {% if 'username' in session: %}
+                    <li class="nav-item rounded-pill">
+                        <a class="nav-link badge-info" href="">
+                            <strong>
+                                {{ session['username'] }}</a>
+                        </strong>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/makevideo">New Video</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/addkeys">Add Keys</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/secrets">API keys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/videos">All Videos</a>
+                    </li>
+                    {% if 'username' in session: %}
+                    <li class="nav-item">
+                        <a class="btn btn-danger" href="/auth/logout">LogOut</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="/login">LogIn</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            {% block content %}
+
+
+            {% endblock %}
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+        <script>
+            // Get the current URL path
+            var currentPath = window.location.pathname;
+
+            // Select all the nav links
+            var navLinks = document.querySelectorAll('.nav-link');
+
+            // Loop through the nav links and check if their href matches the current path
+            for (var i = 0; i < navLinks.length; i++) {
+                var href = navLinks[i].getAttribute('href');
+
+                if (href === currentPath) {
+                    // Add the active class to the nav item
+                    navLinks[i].parentElement.classList.add('active');
+                } else {
+                    // Remove the active class from the nav item
+                    navLinks[i].parentElement.classList.remove('active');
+                }
+            }
+        </script>
+
+    </body>
+
+</html>
