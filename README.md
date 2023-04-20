@@ -3,6 +3,40 @@
 ----
 A software that make videos by taking content from reddit posts and upload on YouTube.
 
+
+### Project launch plan
+- [ ] Add payment gateway to the website.
+- [ ] Use Product Hunt to launch the website.
+- [ ] Get a good Domain name from GitHub Student Developer Pack.
+- [ ] Use Free Tier of AWS to host the website.
+
+    Use other free services like MongoDB Atlas, SendGrid, etc.
+- [ ] Improve [RedditVideoMaker](https://github.com/elebumm/RedditVideoMakerBot) to add all the features of [RedditReels](https://github.com/hardik88t/RedditReels) and make it a web application.
+
+
+### New Features To add 
+<!-- todo check box in markdown -->
+- [ ] Add feature to make video with multiple subreddits.
+            
+    For example, if you want to make a video with memes from r/memes and r/dankmemes, you can add both subreddits and the video will be made with content from both subreddits.
+- [ ] Add more social Media Platforms to upload the video.
+            
+            
+    YouTube, Instagram, TikTok(and similar apps), Facebook, Twitter, Reddit, Dailymotion, Vine, and more.
+
+- [ ] Add more Source social media platforms to get content from.
+
+    Reddit, Instagram, TikTok, Facebook, Twitter, Pinterest, Tumblr, LinkedIn, Vimeo, Dailymotion, Imgur, Flickr, Gfycat, Streamable, Vine, Imgflip, Giphy, Tenor, and more.
+- [ ] Add feature to help manually upload video to website like YouTube.
+- [ ] Improve the UI of the website.
+
+### Future Plans
+- [ ] Use Product Hunt API to get trending products and make a video with them.
+- [ ] Explore other APIs to get content from.
+
+
+
+
 ##### Make Video with Reddit Memes in 5 Minutes !!! 
 
 # Guide for RedditReels Web Application
